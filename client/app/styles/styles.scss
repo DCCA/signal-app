@@ -1,3 +1,11 @@
 @charset "UTF-8";
 
 @import 'vendor/normalize';
+
+$font-family: 'Roboto', sans-serif;
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
