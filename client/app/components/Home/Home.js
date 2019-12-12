@@ -1,108 +1,42 @@
-import React, { Component } from 'react';
-import 'whatwg-fetch';
+import React, { useState, useEffect } from 'react';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+export default function Home() {
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorList, setErrorList] = useState([]);
 
-    this.state = {
-      counters: []
-    };
-
-    this.newCounter = this.newCounter.bind(this);
-    this.incrementCounter = this.incrementCounter.bind(this);
-    this.decrementCounter = this.decrementCounter.bind(this);
-    this.deleteCounter = this.deleteCounter.bind(this);
-
-    this._modifyCounter = this._modifyCounter.bind(this);
-  }
-
-  componentDidMount() {
-    fetch('/api/counters')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          counters: json
-        });
+  const getData = () => {
+    setIsLoading(true);
+    fetch('https://api.nomics.com/v1/currencies/ticker?key=2018-09-demo-dont-deploy-b69315e440beb145&ids=BTC,ETH,XRP&interval=1d,30d&convert=EUR')
+      // Runs when success
+      .then((response) => response.json())
+      .then((response) => {
+        setIsLoading(false);
+        setData(response);
+      })
+      // Runs when error
+      .catch((error) => {
+        setIsLoading(false);
+        setErrorList(error);
       });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (isLoading) {
+    return (<p>Loading…</p>);
   }
 
-  newCounter() {
-    fetch('/api/counters', { method: 'POST' })
-      .then(res => res.json())
-      .then(json => {
-        let data = this.state.counters;
-        data.push(json);
-
-        this.setState({
-          counters: data
-        });
-      });
-  }
-
-  incrementCounter(index) {
-    const id = this.state.counters[index]._id;
-
-    fetch(`/api/counters/${id}/increment`, { method: 'PUT' })
-      .then(res => res.json())
-      .then(json => {
-        this._modifyCounter(index, json);
-      });
-  }
-
-  decrementCounter(index) {
-    const id = this.state.counters[index]._id;
-
-    fetch(`/api/counters/${id}/decrement`, { method: 'PUT' })
-      .then(res => res.json())
-      .then(json => {
-        this._modifyCounter(index, json);
-      });
-  }
-
-  deleteCounter(index) {
-    const id = this.state.counters[index]._id;
-
-    fetch(`/api/counters/${id}`, { method: 'DELETE' })
-      .then(_ => {
-        this._modifyCounter(index, null);
-      });
-  }
-
-  _modifyCounter(index, data) {
-    let prevData = this.state.counters;
-
-    if (data) {
-      prevData[index] = data;
-    } else {
-      prevData.splice(index, 1);
-    }
-
-    this.setState({
-      counters: prevData
-    });
-  }
-
-  render() {
-    return (
-      <>
-        <p>Counters:</p>
-
-        <ul>
-          { this.state.counters.map((counter, i) => (
-            <li key={i}>
-              <span>{counter.count} </span>
-              <button onClick={() => this.incrementCounter(i)}>+</button>
-              <button onClick={() => this.decrementCounter(i)}>-</button>
-              <button onClick={() => this.deleteCounter(i)}>x</button>
-            </li>
-          )) }
-        </ul>
-
-        <button onClick={this.newCounter}>New counter</button>
-      </>
-    );
-  }
+  return (
+    <dl>
+      {(data && data.length > 0) && data.map((item) => (
+        <div key={item.id}>
+          <dt>{item.name}</dt>
+          <dd>{item.price}</dd>
+        </div>
+      ))}
+    </dl>
+  );
 }
-
-export default Home;

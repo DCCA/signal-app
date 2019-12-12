@@ -1,11 +1,25 @@
 @charset "UTF-8";
 
 @import 'vendor/normalize';
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
 
 $font-family: 'Roboto', sans-serif;
+$primary-color: #212121;
+
+html, body{
+    background-color: #212121;
+    color: white;
+    font-family: $font-family;
+}
 
 main {
     display: flex;
     align-items: center;
     justify-content: center; 
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
 }

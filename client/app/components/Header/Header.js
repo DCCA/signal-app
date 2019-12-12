@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Header = () => (
-  <header>
-    <h1>HEADER</h1>
+  <header className='container'>
+    <h1>Crypto App</h1>
   </header>
 );
 
