@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Header = () => (
-  <header className='container'>
-    <h1>Crypto App</h1>
+  <header className='container flex-center'>
+    <i className="signal fas fa-signal"></i>
+    <h1 className='logo'>Signal</h1>
   </header>
 );
 

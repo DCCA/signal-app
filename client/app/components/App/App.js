@@ -6,11 +6,9 @@ import Footer from '../Footer/Footer';
 const App = ({ children }) => (
   <>
     <Header />
-
     <main>
       {children}
     </main>
-
     <Footer />
   </>
 );

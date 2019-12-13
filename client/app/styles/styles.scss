@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
-@import 'vendor/normalize';
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
+@import './vendor/css-reset';
+@import './vendor/rem.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto|Teko&display=swap" rel="stylesheet" rel="stylesheet');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css');
 
 $font-family: 'Roboto', sans-serif;
 $primary-color: #212121;
+$secondary-color: #0d7377;
 
 html, body{
     background-color: #212121;
@@ -18,8 +21,55 @@ main {
     justify-content: center; 
 }
 
+header{
+    color: #14ffec;
+    padding: 1.4rem;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-container{
+    flex-direction: column;
+    margin: 1rem 0;
+    p{
+        padding: 0.2rem;
+    }
+    .button{
+        width: 100%;
+        margin: 0.5rem 0;
+        text-align: center;
+        background-color: $secondary-color;
+        padding: 1rem;
+        border-radius: 0.6rem;
+        text-decoration: none;
+        color: white;
+        box-shadow: 0.4rem 0.4rem 0.5rem 0 #323232;
+        &:active{
+            text-decoration: none;
+        }
+        &:visted{
+            text-decoration: none;
+        }
+    }
+}
+
 .container{
     width: 80%;
     margin: 0 auto;
     text-align: center;
+}
+
+.logo{
+    font-family: 'Teko', sans-serif;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.signal{
+    font-size: 2rem;
+    margin: 0 0.4rem;
 }
