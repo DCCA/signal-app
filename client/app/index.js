@@ -12,7 +12,7 @@ import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
 import Home from './components/Home/Home';
-import Btc from './components/BTC/Btc'
+import CurrencyDetail from './components/CurrencyDetail/CurrencyDetail'
 
 import './styles/styles.scss';
 
@@ -21,7 +21,7 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/btc" component={Btc}/>
+        <Route exact path="/currency-detail/:id" component={CurrencyDetail}/>
         <Route component={NotFound}/>
       </Switch>
     </App>

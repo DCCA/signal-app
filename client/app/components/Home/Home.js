@@ -35,9 +35,7 @@ export default function Home() {
     <div className='home-container flex-center'>
       <p>Welcome to the Signal app.</p>
       <p>Search for the price of your coin</p>  
-      <Link className='button' to='/btc'>BTC</Link>
-      <Link className='button' to='/eth'>ETH</Link>
-      <Link className='button' to='/xrp'>XRP</Link>
+      <Link className='button' to='/currency-detail/:id'>Currency Detail</Link>
       {(data && data.length > 0) && data.map((item) => (
         <div key={item.id}>
           <dt>{item.name}</dt>
