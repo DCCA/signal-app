@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { api_key } from '../../../../config/config'
 
 export default function Home() {
   const [data, setData] = useState({});
@@ -9,7 +8,7 @@ export default function Home() {
 
   const getData = () => {
     setIsLoading(true);
-    fetch('https://api.nomics.com/v1/currencies/ticker?key=' + api_key + '&ids=BTC,ETH,XRP&interval=1d,30d&convert=EUR')
+    fetch('/api-call')
       // Runs when success
       .then((response) => response.json())
       .then((response) => {
@@ -36,12 +35,11 @@ export default function Home() {
       <p>Welcome to the Signal app.</p>
       <p>Search for the price of your coin</p>  
       <Link className='button' to='/currency-detail/:id'>Currency Detail</Link>
+      <select>
       {(data && data.length > 0) && data.map((item) => (
-        <div key={item.id}>
-          <dt>{item.name}</dt>
-          <dd>{item.price}</dd>
-        </div>
+          <option key={item.id}>{item.name}</option>
       ))}
+      </select>
     </div>
   );
 }

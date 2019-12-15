@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Btc() {
+export default function CurrencyDetail() {
     return (
         <div>
             <h1>BTC</h1>
