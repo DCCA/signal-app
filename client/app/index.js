@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useHistory
+  useParams
 } from 'react-router-dom';
 
 import App from './components/App/App';

@@ -30,16 +30,27 @@ export default function Home() {
     return (<p>Loading…</p>);
   }
 
+  const getId = () => {
+    const selectItem = document.querySelector('.selectItem')
+    console.log(selectItem);
+  }
+
   return (
     <div className='home-container flex-center'>
       <p>Welcome to the Signal app.</p>
       <p>Search for the price of your coin</p>  
-      <Link className='button' to='/currency-detail/:id'>Currency Detail</Link>
-      <select>
+      <select className='selectItem'>
       {(data && data.length > 0) && data.map((item) => (
-          <option key={item.id}>{item.name}</option>
+          <option key={item.id} value={item.id}>{item.name}</option>
       ))}
       </select>
+      <Link 
+        className='button' 
+        to='/currency-detail/'
+        //onClick={getId}
+        >
+        Currency Detail
+      </Link>
     </div>
   );
 }
