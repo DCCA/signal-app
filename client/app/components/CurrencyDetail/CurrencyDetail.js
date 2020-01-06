@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function CurrencyDetail(props) {
     const [data, setData] = useState({});
@@ -32,11 +33,13 @@ export default function CurrencyDetail(props) {
     
     return (
         <div>
+            <Link to="/">Go home</Link>
             {(data && data.length > 0) && data.map((item) => (
-              <div>
-                <h1>{item.currency}</h1>
-                <h2>{item.price}</h2>
-                <h2>{item.market_cap}</h2>
+              <div className='currency-detail flex-center'>
+                <img className='currency-logo' src={item.logo_url}></img>
+                <h1>Currency: {item.currency}</h1>
+                <h2>Price: $ {(Math.round(item.price * 100)/100).toFixed(2)}</h2>
+                <h2>MarketCap: $ {item.market_cap}</h2>
               </div>
               ))}
         </div>

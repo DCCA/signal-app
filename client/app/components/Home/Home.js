@@ -37,19 +37,23 @@ export default function Home() {
 
   return (
     <div className='home-container flex-center'>
-      <p>Welcome to the Signal app.</p>
-      <p>Search for the price of your coin</p>  
-      <select className='selectItem' onChange={handleChange}>
-          <option>select</option>
-      {(data && data.length > 0) && data.map((item) => (
-          <option key={item.id} value={item.id}>{item.name}</option>
-      ))}
-      </select>
+      <h1>Welcome to the Signal app.</h1>
+      <h2>Search for the price of your coin:</h2>
+      <div className='box-position'>
+        <div className='box'>
+          <select className='selectItem' onChange={handleChange}>
+              <option>Select</option>
+          {(data && data.length > 0) && data.map((item) => (
+              <option key={item.id} value={item.id}>{item.name}</option>
+          ))}
+          </select>
+        </div>
+      </div>
       <Link 
         className='button' 
         to={'/currency-detail/' + selectedItem.selectValue}
         >
-        Currency Detail
+        Search
       </Link>
     </div>
   );

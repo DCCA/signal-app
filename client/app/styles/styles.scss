@@ -13,6 +13,12 @@ html, body{
     background-color: #212121;
     color: white;
     font-family: $font-family;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/img/home-antenna.jpg');
+    background-size: cover;
+}
+
+h1, h2, h3 {
+    padding: 0.2rem;
 }
 
 main {
@@ -35,16 +41,20 @@ header{
 .home-container{
     flex-direction: column;
     margin: 1rem 0;
+    font-size: 2rem;
+    text-align: left;
+    h1, h2{
+        width: 100%;
+    }
     p{
         padding: 0.2rem;
     }
     .button{
-        width: 100%;
+        width: 18em;
         margin: 0.5rem 0;
         text-align: center;
         background-color: $secondary-color;
         padding: 1rem;
-        border-radius: 0.6rem;
         text-decoration: none;
         color: white;
         box-shadow: 0.4rem 0.4rem 0.5rem 0 #323232;
@@ -73,3 +83,66 @@ header{
     font-size: 2rem;
     margin: 0 0.4rem;
 }
+
+.currency-detail{
+    flex-direction: column;
+    .currency-logo{
+        width: 2rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 10rem;
+    }
+}
+
+// Custom Selector
+.box-position{
+    position: relative;
+    height: 6rem;
+    width: 100%;
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  
+  .box select {
+    background-color: $secondary-color;
+    color: white;
+    padding: 0.8rem;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box::before {
+    content: "\f13a";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .box select option {
+    padding: 30px;
+  }
