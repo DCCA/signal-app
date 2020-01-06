@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className='container'>
-    <p>Footer</p>
+  <footer>
+    <p>made by <a href="https://www.w3schools.com">DCCA</a></p>
   </footer>
 );
 

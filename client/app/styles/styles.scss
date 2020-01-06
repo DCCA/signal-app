@@ -9,11 +9,43 @@ $font-family: 'Roboto', sans-serif;
 $primary-color: #212121;
 $secondary-color: #0d7377;
 
+// App style
+.app-style{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* unvisited link */
+a:link {
+    color: $secondary-color;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: $secondary-color;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: $secondary-color;
+  }
+  
+  /* selected link */
+  a:active {
+    color: $secondary-color;
+  }
+
+
+// Main style
 html, body{
+    height: 100%;
     background-color: #212121;
     color: white;
     font-family: $font-family;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/img/home-antenna.jpg');
+    // Photo by Thomas Millot on Unsplash
     background-size: cover;
 }
 
@@ -92,6 +124,15 @@ header{
         padding: 1rem;
         border-radius: 10rem;
     }
+}
+
+// Footer
+footer{
+    background-color: #212121;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 // Custom Selector
