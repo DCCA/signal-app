@@ -21,7 +21,9 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/currency-detail/:id" component={CurrencyDetail}/>
+        <Route 
+          exact path="/currency-detail/:id" 
+          render={(props) => <CurrencyDetail {...props}/>}/>
         <Route component={NotFound}/>
       </Switch>
     </App>

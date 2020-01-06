@@ -5,6 +5,7 @@ export default function Home() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [errorList, setErrorList] = useState([]);
+  const [selectedItem, setSelectedItem] = useState('');
 
   const getData = () => {
     setIsLoading(true);
@@ -26,28 +27,27 @@ export default function Home() {
     getData();
   }, []);
 
-  if (isLoading) {
-    return (<p>Loading…</p>);
+  const handleChange = function (e){
+    setSelectedItem({selectValue:e.target.value});
   }
 
-  const getId = () => {
-    const selectItem = document.querySelector('.selectItem')
-    console.log(selectItem);
+  if (isLoading) {
+    return (<p>Loading…</p>);
   }
 
   return (
     <div className='home-container flex-center'>
       <p>Welcome to the Signal app.</p>
       <p>Search for the price of your coin</p>  
-      <select className='selectItem'>
+      <select className='selectItem' onChange={handleChange}>
+          <option>select</option>
       {(data && data.length > 0) && data.map((item) => (
           <option key={item.id} value={item.id}>{item.name}</option>
       ))}
       </select>
       <Link 
         className='button' 
-        to='/currency-detail/'
-        //onClick={getId}
+        to={'/currency-detail/' + selectedItem.selectValue}
         >
         Currency Detail
       </Link>
