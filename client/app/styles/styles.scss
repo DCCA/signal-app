@@ -135,6 +135,18 @@ footer{
     flex-direction: row-reverse;
 }
 
+// Card
+.card{
+    background-color:rgba(0, 0, 0, 0.3);
+    display: flex;
+    .card-name{
+        
+    }
+    img{
+
+    }
+}
+
 // Custom Selector
 .box-position{
     position: relative;

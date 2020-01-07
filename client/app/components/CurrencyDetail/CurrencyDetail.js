@@ -35,12 +35,17 @@ export default function CurrencyDetail(props) {
         <div>
             <Link to="/">Go home</Link>
             {(data && data.length > 0) && data.map((item) => (
-              <div className='currency-detail flex-center'>
-                <img className='currency-logo' src={item.logo_url}></img>
-                <h1>Currency: {item.currency}</h1>
-                <h2>Price: $ {(Math.round(item.price * 100)/100).toFixed(2)}</h2>
-                <h2>MarketCap: $ {item.market_cap}</h2>
-              </div>
+              <div className='card'>
+                <div className='card-name'>
+                  <img className='currency-logo' src={item.logo_url}></img>
+                  <h1>Currency: {item.name}</h1>
+                  <h1>Currency: {item.currency}</h1>
+                </div>
+                <div>
+                  <h2>Price: $ {(Math.round(item.price * 100)/100).toFixed(2)}</h2>
+                  <h2>MarketCap: $ {item.market_cap}</h2>
+                </div>
+              </div>  
               ))}
         </div>
     )

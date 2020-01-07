@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => (
   <footer>
-    <p>made by <a href="https://www.w3schools.com">DCCA</a></p>
+    <p>made by <a href='https://github.com/DCCA'>DCCA</a></p>
   </footer>
 );
 
