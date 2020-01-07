@@ -8,14 +8,21 @@
 $font-family: 'Roboto', sans-serif;
 $primary-color: #212121;
 $secondary-color: #0d7377;
+$desktop-width: 1024px;
+$tablet-width: 768px;
 
-// App style
-.app-style{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 100%;
-}
+// Basic functions
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: $tablet-width) {
+      @content;
+    }
+  }
 
 /* unvisited link */
 a:link {
@@ -44,14 +51,19 @@ html, body{
     background-color: #212121;
     color: white;
     font-family: $font-family;
+    box-sizing: border-box;
+}
+
+#app, #app>div {
+    height: 100%;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/img/home-antenna.jpg');
     // Photo by Thomas Millot on Unsplash
     background-size: cover;
-}
-
-h1, h2, h3 {
-    padding: 0.2rem;
-}
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
 main {
     display: flex;
@@ -61,7 +73,11 @@ main {
 
 header{
     color: #14ffec;
-    padding: 1.4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
 }
 
 .flex-center{
@@ -71,19 +87,23 @@ header{
 }
 
 .home-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    width: 86%;
     margin: 1rem 0;
     font-size: 2rem;
-    text-align: left;
+    text-align: center;
     h1, h2{
         width: 100%;
+        padding: 0.6rem 0;
     }
     p{
         padding: 0.2rem;
     }
     .button{
-        width: 18em;
-        margin: 0.5rem 0;
+        width: 60%;
         text-align: center;
         background-color: $secondary-color;
         padding: 1rem;
@@ -97,12 +117,6 @@ header{
             text-decoration: none;
         }
     }
-}
-
-.container{
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
 }
 
 .logo{
@@ -119,10 +133,13 @@ header{
 // Footer
 footer{
     background-color: #212121;
-    padding: 1rem;
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
+    padding: 0.6rem 0;
+    p{
+        padding-right: 0.4rem;
+    }
 }
 
 // Card

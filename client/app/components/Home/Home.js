@@ -36,7 +36,7 @@ export default function Home() {
   }
 
   return (
-    <div className='home-container flex-center'>
+    <div className='home-container'>
       <h1>Welcome to the Signal app.</h1>
       <h2>Search for the price of your coin:</h2>
       <div className='box-position'>
