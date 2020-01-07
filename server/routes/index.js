@@ -18,7 +18,7 @@ module.exports = (app) => {
     console.log(req.url);
     console.log(req.query.id);
     let currencyId = req.query.id;
-    let urlApi = 'https://api.nomics.com/v1/currencies/ticker?key=' + config.api_key + '&ids=' + currencyId.toUpperCase() + '&attributes=price';
+    let urlApi = 'https://api.nomics.com/v1/currencies/ticker?key=' + API_KEY + '&ids=' + currencyId.toUpperCase() + '&attributes=price';
     request( urlApi, function (error, response, body) {
       if(!error && response.statusCode == 200){
         let jData = JSON.parse(body);
