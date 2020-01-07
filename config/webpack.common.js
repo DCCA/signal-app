@@ -11,22 +11,6 @@ const NODE_ENV = process.env.NODE_ENV;
 const isProd = NODE_ENV === 'production';
 
 module.exports = {
-  optimization: {
-    minimizer: [
-      // we specify a custom UglifyJsPlugin here to get source maps in production
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        uglifyOptions: {
-          compress: false,
-          ecma: 6,
-          mangle: true
-        },
-        sourceMap: true
-      })
-    ]
-  },
-
   entry: {
     'app': [
       helpers.root('client/app/index.js')
