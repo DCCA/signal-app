@@ -8,10 +8,6 @@ module.exports = merge(commonConfig, {
 
   mode: 'development',
 
-  optimization: {
-    minimize: false
-  },
-
   entry: {
     'app': [
       'webpack-hot-middleware/client?reload=true'
