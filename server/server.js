@@ -4,6 +4,8 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const dotenv = require('dotenv')
+dotenv.config();
 
 // const config = require('../config/config');
 const API_KEY = process.env.API_KEY;
@@ -15,6 +17,8 @@ const port  = process.env.PORT || 8080;
 
 // Configuration
 // ================================================================================================
+
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
