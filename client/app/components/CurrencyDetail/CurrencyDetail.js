@@ -32,7 +32,7 @@ export default function CurrencyDetail(props) {
       }
     
     return (
-        <div>
+        <div className='currency-detail'>
             <Link to="/">Go home</Link>
             {(data && data.length > 0) && data.map((item) => (
               <div className='card'>
@@ -41,7 +41,7 @@ export default function CurrencyDetail(props) {
                   <h1>Currency: {item.name}</h1>
                   <h1>Currency: {item.currency}</h1>
                 </div>
-                <div>
+                <div className='card-data'>
                   <h2>Price: $ {(Math.round(item.price * 100)/100).toFixed(2)}</h2>
                   <h2>MarketCap: $ {item.market_cap}</h2>
                 </div>
