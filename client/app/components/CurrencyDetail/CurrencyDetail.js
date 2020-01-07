@@ -38,12 +38,14 @@ export default function CurrencyDetail(props) {
               <div className='card'>
                 <div className='card-name'>
                   <img className='currency-logo' src={item.logo_url}></img>
-                  <h1>Currency: {item.name}</h1>
-                  <h1>Currency: {item.currency}</h1>
+                  <h1>{item.name}</h1>  
+                  <h2>Currency: {item.currency}</h2>
                 </div>
                 <div className='card-data'>
-                  <h2>Price: $ {(Math.round(item.price * 100)/100).toFixed(2)}</h2>
-                  <h2>MarketCap: $ {item.market_cap}</h2>
+                  <p>Price</p>
+                  <h3>{numeral(item.price).format('$ 0,0.00')}</h3>
+                  <p>MarketCap</p>
+                  <h3>{numeral(item.market_cap).format('$ 0 a')}</h3>
                 </div>
               </div>  
               ))}

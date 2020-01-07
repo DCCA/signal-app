@@ -116,16 +116,6 @@ header{
     margin: 0 0.4rem;
 }
 
-.currency-detail{
-    flex-direction: column;
-    .currency-logo{
-        width: 2rem;
-        background-color: white;
-        padding: 1rem;
-        border-radius: 10rem;
-    }
-}
-
 // Footer
 footer{
     background-color: #212121;
@@ -136,7 +126,13 @@ footer{
 }
 
 // Card
+.currency-detail{
+    flex-direction: column;
+    width: 70%;
+}
+
 .card{
+    margin-top: 0.8rem;
     background-color:rgba(0, 0, 0, 0.3);
     display: flex;
     height: 40%;
@@ -150,15 +146,25 @@ footer{
         padding: 0.4rem;
         background-color: #212121;
         img{
-            // height: 40%;
+            height: 4rem;
             padding: 0.2rem;
             margin: 1rem;
+            background-color: white;
+            border-radius: 10rem
         }
     }
     .card-data{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-left: 2%;
+    }
+    p{
+        font-size: 0.8rem;
+        margin: 0.4rem;
+    }
+    h3{
+        font-size: 2rem;
     }
 }
 
