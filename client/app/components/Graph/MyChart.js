@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { XAxis, YAxis, HorizontalGridLines, LineSeries, XYPlot, ChartLabel} from 'react-vis';
+import SiteLoader from '../Loader/SiteLoader'
  
 export default function MyChart(props) {
   const [graphData, setGraphData] = useState([]);
@@ -30,11 +31,13 @@ export default function MyChart(props) {
   }
 
   if (isLoading) {
-    return <p>Loading…</p>;
+    return (
+      <SiteLoader />
+    );
   }
  
   return (
-    <div className="graph-area">
+    <div>
       <h1>Price variation (last 24h)</h1>
       {graphData && graphData.length > 0 && (
         <XYPlot 

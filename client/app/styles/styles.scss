@@ -81,6 +81,14 @@ header{
     padding: 2rem 0;
 }
 
+.loader{
+  margin: 2rem 0 0.6rem;
+  .loader-text p{
+    color: #14ffec;
+    margin-bottom: 1rem;
+  }
+}
+
 .flex-center{
     display: flex;
     align-items: center;

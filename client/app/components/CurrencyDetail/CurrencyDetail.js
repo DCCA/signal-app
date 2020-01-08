@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MyChart from "../Graph/MyChart";
 import CardName from "./CardName";
 import CardBasicData from "./CardBasicData";
+import SiteLoader from '../Loader/SiteLoader'
 
 export default function CurrencyDetail(props) {
   const [data, setData] = useState({});
@@ -45,7 +46,9 @@ export default function CurrencyDetail(props) {
   }, []);
 
   if (isLoading) {
-    return <p>Loading…</p>;
+    return (
+    <SiteLoader />
+    );
   }
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import SiteLoader from '../Loader/SiteLoader'
 
 export default function Home() {
   const [data, setData] = useState({});
@@ -32,7 +33,9 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return (<p>Loading…</p>);
+    return (
+      <SiteLoader />
+    );
   }
 
   return (
