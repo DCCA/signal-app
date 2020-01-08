@@ -1,12 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Chart } from 'react-charts'
  
 export default function MyChart(props) {
-  const chartData = React.useMemo(
+  const [graphData, setGraphData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const didMountRef = useRef(false)
+  useEffect(() => {
+    if (didMountRef.current) {
+      mountData();
+      didMountRef.current = false
+    } else didMountRef.current = true
+  });
+
+  const mountData = () => {
+    let price = props.priceValues;
+    // let date = props.dataValues;
+    let dataReady = [];
+    for(let i = 0; i < props.priceValues.length; i++){
+      let arr = [i, Math.round((Number(price[i])*100)/100)];
+      console.log(arr);
+      dataReady.push(arr);
+    }
+    let obj = {
+      label: 'Price',
+        data: dataReady
+      }
+    console.log(obj);
+    console.log(dataReady);
+    setGraphData(dataReady);
+    setIsLoading(false);
+  }
+
+  const data = React.useMemo(
     () => [
       {
-        label: 'Price',
-        data: [{ x: 1, y: 15 }, { x: 2, y: 2 }, { x: 3, y: 5 }]
+        label: 'Series 1',
+        data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
       }
     ],
     []
@@ -19,15 +49,19 @@ export default function MyChart(props) {
     ],
     []
   )
+
+  if (isLoading) {
+    return <p>Loading…</p>;
+  }
  
   return (
     <div
       style={{
         width: '400px',
-        height: '300px'
+        height: '200px'
       }}
     >
-      <Chart data={chartData} axes={axes} />
+          {graphData.length < 0 ? <div>Still Loading... </div> : <Chart data={graphData} axes={axes} /> }
     </div>
   )
 }

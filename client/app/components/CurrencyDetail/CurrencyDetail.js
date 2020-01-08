@@ -30,7 +30,6 @@ export default function CurrencyDetail(props) {
       .then(response => response.json())
       .then(response => {
         setGraphData(response);
-        console.log(response);
       })
       // Runs when error
       .catch(error => {
@@ -64,9 +63,8 @@ export default function CurrencyDetail(props) {
               <h3>{numeral(item.price).format("$ 0,0.00")}</h3>
               <p>MarketCap</p>
               <h3>{numeral(item.market_cap).format("$ 0 a")}</h3>
-              <p>{ graphData[0] }</p>
             </div>
-            <MyChart selectCurrency={item.id} />
+            <MyChart priceValues={ graphData.prices } dataValues={ graphData.timestamps } />
           </div>
         ))}
     </div>
