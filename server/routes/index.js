@@ -28,14 +28,20 @@ module.exports = (app) => {
   app.get('/api-call-currency/graph', (req, res) => {
     let currencyId = req.query.id;
     const date = new Date();
-    date.setHours(date.getHours() - 24)
-    let endTime = new Date();
+    const dateSecond = new Date();
+    date.setHours(date.getHours() - 16)
+    dateSecond.setHours(dateSecond.getHours() + 8);
+    let endTime = dateSecond;
     endTime = encodeURIComponent(endTime.toISOString());
+    console.log(endTime);
     let startTime = date;
     startTime = encodeURIComponent(startTime.toISOString());
+    console.log(startTime);
     let urlApi = 'https://api.nomics.com/v1/currencies/sparkline?key=' + API_KEY + '&start=' + startTime + '&end=' + endTime;
+    console.log(urlApi);
     request( urlApi, function (error, response, body) {
       if(!error && response.statusCode == 200){
+        console.log(response.headers.date);
         let jData = JSON.parse(body);
         for(let i = 0; i < jData.length; i++){
           if(jData[i].currency === currencyId.toUpperCase()){
