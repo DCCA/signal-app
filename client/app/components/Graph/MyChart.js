@@ -42,7 +42,7 @@ export default function MyChart(props) {
       {graphData && graphData.length > 0 && (
         <XYPlot 
           width={window.innerWidth * 0.85} 
-          height={300}
+          height={window.innerHeight / 3}
           margin={{left: 60}}
           >
           <HorizontalGridLines />
