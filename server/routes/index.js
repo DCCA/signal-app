@@ -33,12 +33,9 @@ module.exports = (app) => {
     dateSecond.setHours(dateSecond.getHours() + 8);
     let endTime = dateSecond;
     endTime = encodeURIComponent(endTime.toISOString());
-    console.log(endTime);
     let startTime = date;
     startTime = encodeURIComponent(startTime.toISOString());
-    console.log(startTime);
     let urlApi = 'https://api.nomics.com/v1/currencies/sparkline?key=' + API_KEY + '&start=' + startTime + '&end=' + endTime;
-    console.log(urlApi);
     request( urlApi, function (error, response, body) {
       if(!error && response.statusCode == 200){
         console.log(response.headers.date);

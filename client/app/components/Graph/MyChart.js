@@ -16,30 +16,15 @@ export default function MyChart(props) {
   const mountData = () => {
     let price = props.priceValues;
     let date = props.dataValues;
-    console.log(date);
-    console.log(typeof date[0]);
     let dataReady = [];
     for(let i = 0; i < props.priceValues.length; i++){
-      // var d = new Date ( year, month, day, hour, minute, second );
-      var secondPart = date[i].split('T')[1],
-          hour = parseInt(secondPart.split(':')[0], 10),
-          minute = parseInt(secondPart.split(':')[1], 10),
-          second = parseInt(secondPart.split(':')[1], 10),
-          day = parseInt(date[i].split('-')[2], 10),
-          month = parseInt(date[i].split('-')[1], 10),
-          year = parseInt(date[i].split('-')[0], 10);
       let dateObj = Date.parse(date[i]);
-        console.log(dateObj);
       let obj = {
         x: dateObj,
         y: Math.round((Number(price[i])*1000))/1000
       }
       dataReady.push(obj);
     }
-    let obj = {
-      label: 'Price',
-        data: dataReady
-      }
     setGraphData(dataReady);
     setIsLoading(false);
   }
@@ -55,7 +40,7 @@ export default function MyChart(props) {
         <XYPlot 
           width={window.innerWidth * 0.85} 
           height={window.innerHeight / 3}
-          margin={{left: 60}}
+          margin={{left: 50, bottom: 50}}
           >
           <HorizontalGridLines />
           <LineSeries
@@ -69,21 +54,22 @@ export default function MyChart(props) {
             title=""
             style={{
               line: { stroke: "white" },
-              text: { stroke: "none", fill: "white", fontWeight: 300 }
+              text: { stroke: "none", fill: "white", fontWeight: 300, fontSize: 10}
             }}
             tickFormat={function tickFormat(d){
               const date = new Date(d)
               return date.toISOString().substr(11,5)
              }}
-            tickTotal={13}
+            tickTotal={14}
+            tickLabelAngle={-90}
           />
           <YAxis
-            title="Price"
+            title=""
             style={{
               line: { stroke: "white" },
-              text: { stroke: "white", fill: "white", fontWeight: 300}
+              text: { fill: "white",fontWeight: 300, fontSize: 12}
             }}
-            tickFormat={(v => '$ ' + v)}
+            tickFormat={v => '$ ' + [v]}
           />
         </XYPlot>
       )}
