@@ -27,15 +27,19 @@ module.exports = (app) => {
   // Get the sparkline graph
   app.get('/api-call-currency/graph', (req, res) => {
     let currencyId = req.query.id;
-    const date = new Date();
-    const dateSecond = new Date();
-    date.setHours(date.getHours() - 16)
-    dateSecond.setHours(dateSecond.getHours() + 8);
-    let endTime = dateSecond;
-    endTime = encodeURIComponent(endTime.toISOString());
-    let startTime = date;
-    startTime = encodeURIComponent(startTime.toISOString());
-    let urlApi = 'https://api.nomics.com/v1/currencies/sparkline?key=' + API_KEY + '&start=' + startTime + '&end=' + endTime;
+    function getStartAndEndDate(){
+      const date = new Date();
+      const dateSecond = new Date();
+      date.setHours(date.getHours() - 16)
+      dateSecond.setHours(dateSecond.getHours() + 8);
+      let endTime = dateSecond;
+      endTime = encodeURIComponent(endTime.toISOString());
+      let startTime = date;
+      startTime = encodeURIComponent(startTime.toISOString());
+      return([startTime, endTime])
+    }
+    const time = getStartAndEndDate();
+    let urlApi = 'https://api.nomics.com/v1/currencies/sparkline?key=' + API_KEY + '&start=' + time[0] + '&end=' + time[1];
     request( urlApi, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(response.headers.date);
