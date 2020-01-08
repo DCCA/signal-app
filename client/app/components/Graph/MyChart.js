@@ -15,7 +15,7 @@ export default function MyChart(props) {
 
   const mountData = () => {
     let price = props.priceValues;
-    // let date = props.dataValues;
+    let date = props.dataValues;
     let dataReady = [];
     for(let i = 0; i < props.priceValues.length; i++){
       let obj = {
@@ -28,8 +28,6 @@ export default function MyChart(props) {
       label: 'Price',
         data: dataReady
       }
-    console.log(obj);
-    console.log(dataReady);
     setGraphData(dataReady);
     setIsLoading(false);
   }
@@ -40,7 +38,7 @@ export default function MyChart(props) {
  
   return (
     <div className="graph-area">
-      <h1>Price variation</h1>
+      <h1>Price variation (last 24h)</h1>
       {graphData && graphData.length > 0 && (
         <XYPlot 
           width={window.innerWidth * 0.85} 
