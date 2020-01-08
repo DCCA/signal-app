@@ -37,16 +37,21 @@ module.exports = (app) => {
     startTime = encodeURIComponent(startTime.toISOString());
     let urlApi = 'https://api.nomics.com/v1/currencies/sparkline?key=' + API_KEY + '&start=' + startTime + '&end=' + endTime;
     request( urlApi, function (error, response, body) {
-      if(!error && response.statusCode == 200){
+      if (!error && response.statusCode == 200) {
         console.log(response.headers.date);
         let jData = JSON.parse(body);
-        for(let i = 0; i < jData.length; i++){
-          if(jData[i].currency === currencyId.toUpperCase()){
-            jData = jData[i];
+        //Pass data already parsed
+        function getDataFromSelectedCurrency(dataObject) {
+          let selectedData;
+          for (let i = 0; i < dataObject.length; i++) {
+            if (dataObject[i].currency === currencyId.toUpperCase()) {
+              selectedData = dataObject[i];
+              return selectedData;
+            }
           }
         }
-        res.send(jData);
-      } 
+        res.send(getDataFromSelectedCurrency(jData));
+      }
     })
   });
 };
