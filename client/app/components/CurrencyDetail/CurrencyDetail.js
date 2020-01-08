@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MyChart from "../Graph/MyChart";
+import CardName from "./CardName";
+import CardBasicData from "./CardBasicData";
 
 export default function CurrencyDetail(props) {
   const [data, setData] = useState({});
@@ -53,17 +55,8 @@ export default function CurrencyDetail(props) {
         data.length > 0 &&
         data.map(item => (
           <div className="card">
-            <div className="card-name">
-              <img className="currency-logo" src={item.logo_url}></img>
-              <h1>{item.name}</h1>
-              <h2>Currency: {item.currency}</h2>
-            </div>
-            <div className="card-data">
-              <p>Price</p>
-              <h3>{numeral(item.price).format("$ 0,0.00")}</h3>
-              <p>MarketCap</p>
-              <h3>{numeral(item.market_cap).format("$ 0 a")}</h3>
-            </div>
+            <CardName currencyName={item.name} currencyImageUrl={item.logo_url} currencyId={item.currency}/>
+            <CardBasicData currencyPrice={item.price} currencyMarketCap={item.market_cap}/>
             <div className='card-graph'>
             <MyChart priceValues={ graphData.prices } dataValues={ graphData.timestamps } />
             </div>

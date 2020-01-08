@@ -28,17 +28,23 @@ module.exports = (app) => {
   app.get('/api-call-currency/graph', (req, res) => {
     let currencyId = req.query.id;
     function getStartAndEndDate(){
+      //create new two dates
+      //Improvements: make this timezone adjustment with the server response variable
       const date = new Date();
       const dateSecond = new Date();
+      //set the right hour to correct the timezone from the api
       date.setHours(date.getHours() - 16)
       dateSecond.setHours(dateSecond.getHours() + 8);
+      //convert the time to the API format
       let endTime = dateSecond;
       endTime = encodeURIComponent(endTime.toISOString());
       let startTime = date;
       startTime = encodeURIComponent(startTime.toISOString());
+      //return value
       return([startTime, endTime])
     }
     const time = getStartAndEndDate();
+    
     let urlApi = 'https://api.nomics.com/v1/currencies/sparkline?key=' + API_KEY + '&start=' + time[0] + '&end=' + time[1];
     request( urlApi, function (error, response, body) {
       if (!error && response.statusCode == 200) {
