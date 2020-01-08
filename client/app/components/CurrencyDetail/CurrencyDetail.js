@@ -64,7 +64,9 @@ export default function CurrencyDetail(props) {
               <p>MarketCap</p>
               <h3>{numeral(item.market_cap).format("$ 0 a")}</h3>
             </div>
+            <div className='card-graph'>
             <MyChart priceValues={ graphData.prices } dataValues={ graphData.timestamps } />
+            </div>
           </div>
         ))}
     </div>

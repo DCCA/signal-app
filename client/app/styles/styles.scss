@@ -176,6 +176,15 @@ footer{
         flex-direction: column;
         justify-content: center;
         margin-left: 2%;
+        width: 50%;
+    }
+    .card-graph{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: black;
+      margin-top: 1rem;
     }
     p{
         font-size: 0.8rem;
