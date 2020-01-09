@@ -7,16 +7,7 @@ export default function MyChart(props) {
   const [isLoading, setIsLoading] = useState(true);
   const didMountRef = useRef(false)
 
-  useEffect(() => {
-    if (didMountRef.current) {
-      mountData();
-      didMountRef.current = false
-    } else didMountRef.current = true
-  });
-
-  const mountData = () => {
-    let price = props.priceValues;
-    let date = props.dataValues;
+  function generateObjectForGraph(price, date){
     let dataReady = [];
     for(let i = 0; i < props.priceValues.length; i++){
       let dateObj = Date.parse(date[i]);
@@ -26,9 +17,20 @@ export default function MyChart(props) {
       }
       dataReady.push(obj);
     }
-    setGraphData(dataReady);
+    return dataReady
+  }
+
+  function handleDataWhenReady(){
+    setGraphData(generateObjectForGraph(props.priceValues, props.dataValues));
     setIsLoading(false);
   }
+
+  useEffect(() => {
+    if (didMountRef.current) {
+      handleDataWhenReady();
+      didMountRef.current = false
+    } else didMountRef.current = true
+  });
 
   if (isLoading) {
     return (
