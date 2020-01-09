@@ -27,24 +27,29 @@ $tablet-width: 768px;
 
 /* unvisited link */
 a:link {
-    color: $secondary-color;
+    color: $highlightcolor;
   }
   
   /* visited link */
   a:visited {
-    color: $secondary-color;
+    color: $highlightcolor;
   }
   
   /* mouse over link */
   a:hover {
-    color: $secondary-color;
+    color: $highlightcolor;
   }
   
   /* selected link */
   a:active {
-    color: $secondary-color;
+    color: $highlightcolor;
   }
-
+.back-button{
+  background-color: #212121;
+  padding: 0.4rem;
+  text-decoration: none;
+  font-weight: 600;
+}
 
 // Main style
 html, body{
@@ -133,6 +138,7 @@ header{
     font-family: 'Teko', sans-serif;
     font-size: 3rem;
     font-weight: 100;
+    text-decoration: none;
 }
 
 .signal{

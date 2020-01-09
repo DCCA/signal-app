@@ -53,7 +53,7 @@ export default function CurrencyDetail(props) {
 
   return (
     <div className="currency-detail">
-      <Link to="/">Go home</Link>
+      <Link className='back-button' to="/">Go home</Link>
       {data &&
         data.length > 0 &&
         data.map(item => (

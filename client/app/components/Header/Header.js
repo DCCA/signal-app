@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Header = () => (
   <header className='container'>
-    <i className="signal fas fa-signal"></i>
-    <h1 className='logo'>Signal</h1>
+    <Link className='signal fas fa-signal' to="/"></Link>
+    <Link className='logo' to="/">Signal</Link>
   </header>
 );
 
