@@ -25,6 +25,18 @@ export default function MyChart(props) {
     setIsLoading(false);
   }
 
+  function setMarginLeft(num){
+    if(num < 1){
+      let lengthFromPrice = num.toString()
+      lengthFromPrice = lengthFromPrice.length * 12;
+      return lengthFromPrice
+    } else {
+      let lengthFromPrice = num.toString()
+      lengthFromPrice = lengthFromPrice.length * 8;
+      return lengthFromPrice
+    }
+  }
+
   useEffect(() => {
     if (didMountRef.current) {
       handleDataWhenReady();
@@ -45,7 +57,7 @@ export default function MyChart(props) {
         <XYPlot 
           width={window.innerWidth * 0.85} 
           height={window.innerHeight / 3}
-          margin={{left: 50, bottom: 50}}
+          margin={{left: setMarginLeft(graphData[0].y), bottom: 50}}
           >
           <HorizontalGridLines />
           <LineSeries
