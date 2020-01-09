@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { XAxis, YAxis, HorizontalGridLines, LineSeries, XYPlot, ChartLabel} from 'react-vis';
+import { XAxis, YAxis, LineSeries, XYPlot, LineMarkSeries} from 'react-vis';
 import SiteLoader from '../Loader/SiteLoader'
  
 export default function MyChart(props) {
@@ -63,13 +63,14 @@ export default function MyChart(props) {
           height={window.innerHeight / 3}
           margin={{left: setMarginLeft(graphData[0].y), bottom: 50}}
           >
-          <HorizontalGridLines />
-          <LineSeries
-            color="white"
+          <LineMarkSeries 
+            lineStyle={{stroke: 'white'}}
+            markStyle={{stroke: 'white' ,fill: 'white'}}
             data={graphData}
-            strokeStyle="solid"
-            opacity={1}
-            opacityType="linear"
+            style={{
+              strokeWidth: '0.1rem',
+              r: 2
+            }}
           />
           <XAxis
             title=""
