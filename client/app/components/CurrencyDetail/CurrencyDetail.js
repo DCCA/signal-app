@@ -59,7 +59,7 @@ export default function CurrencyDetail(props) {
         data.map(item => (
           <div className="card">
             <CardName currencyName={item.name} currencyImageUrl={item.logo_url} currencyId={item.currency}/>
-            <CardBasicData currencyPrice={item.price} currencyMarketCap={item.market_cap}/>
+            <CardBasicData currencyPrice={item.price} currencyMarketCap={item.market_cap} priceChange={item['1d'].price_change} priceChangePercentage={item['1d'].price_change_pct}/>
             <div className='card-graph'>
             <MyChart priceValues={ graphData.prices } dataValues={ graphData.timestamps } />
             </div>

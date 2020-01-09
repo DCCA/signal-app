@@ -52,7 +52,7 @@ export default function MyChart(props) {
  
   return (
     <div>
-      <h1>Price variation (last 24h)</h1>
+      <h1>Price variation (24h)</h1>
       {graphData && graphData.length > 0 && (
         <XYPlot 
           width={window.innerWidth * 0.85} 

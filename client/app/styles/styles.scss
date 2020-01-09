@@ -8,6 +8,7 @@
 $font-family: 'Roboto', sans-serif;
 $primary-color: #212121;
 $secondary-color: #0d7377;
+$highlightcolor: #14ffec;
 $desktop-width: 1024px;
 $tablet-width: 768px;
 
@@ -84,7 +85,7 @@ header{
 .loader{
   margin: 2rem 0 0.6rem;
   .loader-text p{
-    color: #14ffec;
+    color: $highlightcolor;
     margin-bottom: 1rem;
   }
 }
@@ -188,10 +189,21 @@ footer{
         flex-direction: column;
         justify-content: center;
         width: 100%;
+        margin: 0.6rem;
         @include tablet{
           width: 60%;
         }
         text-align: center;
+        .price-marketcap-card{
+          margin-bottom: 1rem;
+        }
+        .price-variation{
+          padding: 0.4rem;
+          background-color: #0000004d;
+          h3{
+            padding: 0.2rem;
+          }
+        }
     }
     .card-graph{
       width: 100%;
@@ -199,7 +211,6 @@ footer{
       align-items: center;
       justify-content: center;
       background-color: black;
-      margin-top: 1rem;
       padding-bottom: 1rem;
       @include tablet{
         margin-top: 0.1rem;
@@ -216,6 +227,17 @@ footer{
     h3{
         font-size: 2rem;
     }
+}
+
+// Conditionals
+.negative{
+  color: #FF3333;
+  font-weight: 400;
+}
+
+.positive{
+  color: #19FF40;
+  font-weight: 400;
 }
 
 // Custom Selector
