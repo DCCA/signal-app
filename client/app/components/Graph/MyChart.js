@@ -30,7 +30,11 @@ export default function MyChart(props) {
       let lengthFromPrice = num.toString()
       lengthFromPrice = lengthFromPrice.length * 12;
       return lengthFromPrice
-    } else {
+    } if(num < 5){
+      let lengthFromPrice = num.toString()
+      lengthFromPrice = lengthFromPrice.length * 14;
+      return lengthFromPrice
+    }else {
       let lengthFromPrice = num.toString()
       lengthFromPrice = lengthFromPrice.length * 8;
       return lengthFromPrice
