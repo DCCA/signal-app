@@ -1,33 +1,34 @@
-# MERN-boilerplate
+# Signal App
 
-This is a boilerplate project using the following technologies:
-- [React](https://facebook.github.io/react/) and [React Router](https://reacttraining.com/react-router/) for the frontend
-- [Express](http://expressjs.com/) and [Mongoose](http://mongoosejs.com/) for the backend
-- [Sass](http://sass-lang.com/) for styles (using the SCSS syntax)
-- [Webpack](https://webpack.github.io/) for compilation
+This project is a app that checks the price variation of the listed currencies.
+It them dispay the current price, price variation for the last 24h and the graph of the price variation too.
 
+## Tech Stack
 
-## Requirements
+I have used to start the project the MERN Boilerplate (https://github.com/keithweaver/MERN-boilerplate).
 
-- [Node.js](https://nodejs.org/en/) 6+
+The app was built using:
+* Node
+* React
+* SASS
+* Webpack
+* Nomics API
 
-```shell
-npm install
-```
-
+## Tech Stack
+Give it a try following this steps:
+1. Clone or download the project
+2. Change the env dummy file and the config dummy file
+3. Insert your API Key for Nomics (You can get one here: https://docs.nomics.com/)
+4. Run the build command 'npm start'
+5. Have fun!
 
 ## Running
-
-Make sure to add a `config.js` file in the `config` folder. See the example there for more details.
-
 Production mode:
-
 ```shell
 npm start
 ```
 
 Development (Webpack dev server) mode:
-
 ```shell
 npm run start:dev
 ```
