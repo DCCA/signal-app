@@ -1,11 +1,11 @@
 {
-  "name": "MERN-boilerplate",
+  "name": "signal-app",
   "version": "1.0.0",
-  "description": "MERN stack project boilerplate",
-  "author": "Eugene Cheung",
+  "description": "App to check crypto currencies prices",
+  "author": "Daniel Andrade",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arkon/MERN-boilerplate.git"
+    "url": "git+https://github.com/DCCA/signal-app"
   },
   "license": "MIT",
   "private": true,
