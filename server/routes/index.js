@@ -1,5 +1,6 @@
 const API_KEY = process.env.API_KEY;
 const rp = require('request-promise');
+const helper = require('./helper');
 
 module.exports = app => {
   // API routes
@@ -31,24 +32,7 @@ module.exports = app => {
   // Get the sparkline graph
   app.get('/api-call-currency/graph', (req, res) => {
     let currencyId = req.query.id;
-    function getStartAndEndDate() {
-      //create new two dates
-      //Improvements: make this timezone adjustment with the server response variable
-      const date = new Date();
-      const dateSecond = new Date();
-      //set the right hour to correct the timezone from the api
-      date.setHours(date.getHours() - 16);
-      dateSecond.setHours(dateSecond.getHours() + 8);
-      //convert the time to the API format
-      let endTime = dateSecond;
-      endTime = encodeURIComponent(endTime.toISOString());
-      let startTime = date;
-      startTime = encodeURIComponent(startTime.toISOString());
-      //return value
-      return [startTime, endTime];
-    }
-    const time = getStartAndEndDate();
-
+    const time = helper.getStartAndEndDate();
     let urlApi =
       'https://api.nomics.com/v1/currencies/sparkline?key=' +
       API_KEY +
@@ -59,16 +43,7 @@ module.exports = app => {
     rp(urlApi)
       .then(data => JSON.parse(data))
       .then(data => {
-        function getDataFromSelectedCurrency(dataObject) {
-          let selectedData;
-          for (let i = 0; i < dataObject.length; i++) {
-            if (dataObject[i].currency === currencyId.toUpperCase()) {
-              selectedData = dataObject[i];
-              return selectedData;
-            }
-          }
-        }
-        res.send(getDataFromSelectedCurrency(data));
+        res.send(helper.getDataFromSelectedCurrency(data, currencyId));
       })
       .catch(err => console.log(err));
   });
